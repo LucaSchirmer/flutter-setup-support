@@ -13,8 +13,8 @@
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "flutter-setup-support.helloWorld",
-      "title": "Hello World"
+      "command": "flutter-setup-support.createAppNavigationHandler",
+      "title": "Create App Navigation Handler"
     }]
   },
   "scripts": {
