@@ -1,6 +1,7 @@
 
 const vscode = require('vscode');
-const fs = require('fs')
+const fs = require('fs');
+const { Decipher } = require('crypto');
 const fileUrl = vscode.Uri.file('text.txt');
 
 /**
@@ -33,3 +34,5 @@ module.exports = {
 	activate,
 	deactivate
 }
+
+
