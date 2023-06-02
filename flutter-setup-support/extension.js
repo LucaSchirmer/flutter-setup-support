@@ -12,69 +12,80 @@ function activate(context) {
 	let disposable = vscode.commands.registerCommand('flutter-setup-support.createAppNavigationHandler',  
 		async () => {
 			const files = await vscode.workspace.findFiles(`appNavigationHandler.dart`);
-			
+			let fileContent;
 			console.log(files);
-			vscode.window.showInformationMessage('creating pages');
 			try {
-					if(files.length == 0){
-
-						// creating files
-						fs.writeFile(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/appNavigationHandler.dart`, 
+				fileContent = `
+/* import here all your files you're using like so: 
+*  import 'folder/file.dart'
+*/
 						
-						`
-						/* import here all your files you're using like so: 
-						*  import 'folder/´file.dart'
-						*/
-						
-						class ControlWidget extends StatessWidget{
-							const controlWidget({super.key})
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-							@Widget build(BuildContext context) {
-								return MaterialApp(
-									title: 'Title',
-									debugShowCheckedModeBanner: false, 
-									home: const Scaffold(body: Container (
-										child: Text(text: "Lorem Ipsum")
-									));
-								);
-							}
+class ControlWidget extends StatelessWidget{
+	const ControlWidget({super.key});
+
+	@override
+	Widget build(BuildContext context) {
+		return  MaterialApp(
+			title: 'Title',
+			debugShowCheckedModeBanner: false, 
+			home: Scaffold(body: 
+				Text("Lorem Ipsum"),
+			)
+		);
+	}
+}
+
+class AppHandler extends ControlWidget {
+  AppHandler(widgetPath, context, info, {super.key}) {
+    navigateToWidget(widgetPath, context, info);
+  }
+
+
+	// var pathMap = {};
+
+	// addToNavigationMap(name, path){
+
+	// }
+
+
+	navigateToWidget(widgetPath, context, info){
+		
+		
+	}
+}`;
+				if(files.length == 0){
+
+					
+					console.log(fileContent)
+					// creating files
+					fs.writeFile(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/appNavigationHandler.dart`, fileContent.toString(),
+						(err)=>{
+							if(err){
+								console.error(err);
+							}console.log("exe0");
 						}
-
-						class AppHandler extends controlWidget{
-							AppHandler(widgetPath, context, info){
-								navigateToWidget(widgetPath, context, info);
-							}
-
-
-							const pathMap = new Map();
-
-							addToNavigationMap(name, path){
-
-							}
-
-
-							navigateToWidget(widgetPath, context, info){
-								
-								
-							}
-						}
-
-						`
-						, 
-
+					);
+				}else{
+					let check = await vscode.window.createInputBox({password: false, placeHolder: "do you want to overwrite the file", prompt: "type confirm to overwrite", value: "confirm"});
+					console.log(check)
+					if(check == "Y" || check == "y"){
+						fs.writeFile(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/appNavigationHandler.dart`, fileContent.toString(),
 							(err)=>{
 								if(err){
 									console.error(err);
-								}console.log("exe");
+								}console.log("exe1");
 							}
 						);
 					}
+				}
 			} catch (error) { 
 				console.error(error);
 			}
 			
-			vscode.window.showInformationMessage('Hello World from flutter setup support!');
-			
+			vscode.window.showInformationMessage('finished set up!')
 		}
 	);
 
