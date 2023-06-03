@@ -57,9 +57,6 @@ class AppHandler extends ControlWidget {
 	}
 }`;
 				if(files.length == 0){
-
-					
-					console.log(fileContent)
 					// creating files
 					fs.writeFile(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/appNavigationHandler.dart`, fileContent.toString(),
 						(err)=>{
@@ -69,9 +66,15 @@ class AppHandler extends ControlWidget {
 						}
 					);
 				}else{
-					let check = await vscode.window.createInputBox({password: false, placeHolder: "do you want to overwrite the file", prompt: "type confirm to overwrite", value: "confirm"});
+					const check = await vscode.window.showInputBox({
+						placeHolder: "Do you want to overwrite the file?", 
+						prompt: "type confirm to overwrite", 
+						value: ""}
+					);
+					
+
 					console.log(check)
-					if(check == "Y" || check == "y"){
+					if(check == "confirm" || check == "Confirm"){
 						fs.writeFile(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/appNavigationHandler.dart`, fileContent.toString(),
 							(err)=>{
 								if(err){
