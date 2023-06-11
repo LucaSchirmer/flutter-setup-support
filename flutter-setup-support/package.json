@@ -15,7 +15,12 @@
     "commands": [{
       "command": "flutter-setup-support.createAppNavigationHandler",
       "title": "Create App Navigation Handler"
-    }]
+    },{
+      "command": "flutter-setup-support.createNavigationSetUp",
+      "title": "Create dynamic Navigationbar set up"
+    }
+  
+  ]
   },
   "scripts": {
     "lint": "eslint .",
