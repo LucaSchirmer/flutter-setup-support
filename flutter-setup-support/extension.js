@@ -1,4 +1,4 @@
-
+"use strict"
 const vscode = require('vscode');
 const fs = require('fs');
 
@@ -7,24 +7,24 @@ const fs = require('fs');
  */
 // Executed only once at the start
 function activate(context) {
-
+	var libBool = false
+	try{
+		if(fs.existsSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/lib`)){
+			libBool = true
+		};
+	}catch(e){
+		console.log(e)
+	}
 	
 	let disposable = vscode.commands.registerCommand('flutter-setup-support.createAppNavigationHandler',  
 		async () => {
-			const files = await vscode.workspace.findFiles(`app_navigation_handler.dart`);
+			
 
 			// check wheter or not the app files are inside the lib folder
-			var libBool = false
-			try{
-				if(fs.existsSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/lib`)){
-					libBool = true
-				};
-			}catch(e){
-				console.log(e)
-			}
+			
 			let fileContent;
 			var app_navigation_handlerUrl; 
-			console.log(files);
+			// console.log(files);
 			try {
 				fileContent = `
 /* import here all your files you're using like so: 
@@ -74,7 +74,13 @@ class AppHandler extends ControlWidget {
 				if(libBool){
 					app_navigation_handlerUrl = `${vscode.workspace.workspaceFolders[0].uri.fsPath}/lib/app_navigation_handler.dart`;
 				}
-				if(files.length == 0){
+
+				if(
+					!fs.existsSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/lib/app_navigation_handler.dart`)
+					&& 
+					!fs.existsSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/app_navigation_handler.dart`)
+				)
+				{
 					// creating files
 					fs.writeFile(app_navigation_handlerUrl, fileContent.toString(),
 						(err)=>{
@@ -113,6 +119,140 @@ class AppHandler extends ControlWidget {
 
 	let disposableNavSetUp = vscode.commands.registerCommand('flutter-setup-support.createNavigationSetUp', async() =>{
 
+		var app_navigation_barsUrl; 
+
+		let fileContent = `
+import 'package:flutter/material.dart';
+
+AppBar mainAppBar(BuildContext context, title) {
+  return AppBar(
+    automaticallyImplyLeading: false,
+    title: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        IconButton(
+          icon: const Icon(Icons.arrow_back,
+              color: Color.fromARGB(155, 255, 255, 255)),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+        ),
+        Expanded(
+          child: Container(
+            margin: const EdgeInsets.only(left: 2),
+            child: Text(
+              title,
+              style: const TextStyle(
+                color: Color.fromARGB(255, 255, 255, 255),
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+    backgroundColor: const Color.fromARGB(255, 18, 18, 18),
+  );
+}
+
+`;
+
+		
+
+		if(libBool){
+			try{
+				app_navigation_barsUrl = `${vscode.workspace.workspaceFolders[0].uri.fsPath}/lib/main_app_bar.dart`;
+
+
+				if(!fs.existsSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/lib/app_navigation_bars`)){
+					fs.mkdir(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/lib/app_navigation_bars`,
+					(err)=>{
+						if(err){
+							console.error(err);
+						}console.log("dir0");
+					});
+				}
+				app_navigation_barsUrl = `${vscode.workspace.workspaceFolders[0].uri.fsPath}/lib/app_navigation_bars/main_app_bar.dart`;
+
+				if(!fs.existsSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/lib/app_navigation_bars/main_app_bar.dart`)){
+					fs.writeFile(app_navigation_barsUrl, fileContent.toString(),
+						(err)=>{
+							if(err){
+								console.error(err);
+							}console.log("exe0");
+						}
+					);
+				}else{
+					const check = await vscode.window.showInputBox({
+						placeHolder: "Do you want to overwrite the file?", 
+						prompt: "type confirm to overwrite", 
+						value: ""
+						}
+					);
+
+					console.log(check)
+					if(check == "confirm" || check == "Confirm"){
+						fs.writeFile(app_navigation_barsUrl, fileContent.toString(),
+							(err)=>{
+								if(err){
+									console.error(err);
+								}console.log("exe2");
+							}
+						);
+					}
+				}
+			} catch (error) { 
+				console.error(error);
+			}
+		}else{
+			try{
+				app_navigation_barsUrl = `${vscode.workspace.workspaceFolders[0].uri.fsPath}/main_app_bar.dart`;
+
+
+				if(!fs.existsSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/app_navigation_bars`)){
+					fs.mkdir(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/app_navigation_bars`,
+					(err)=>{
+						if(err){
+							console.error(err);
+						}console.log("dir1");
+					});
+				}
+				app_navigation_barsUrl = `${vscode.workspace.workspaceFolders[0].uri.fsPath}/app_navigation_bars/main_app_bar.dart`;
+				if(!fs.existsSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}/app_navigation_bars/main_app_bar.dart`)){
+					fs.writeFile(app_navigation_barsUrl, fileContent.toString(),
+						(err)=>{
+							if(err){
+								console.error(err);
+							}console.log("exe1");
+						}
+					);
+				}else{
+					const check1 = await vscode.window.showInputBox({
+						placeHolder: "Do you want to overwrite the file?", 
+						prompt: "type confirm to overwrite", 
+						value: ""
+						}
+					);
+
+					console.log(check1)
+					if(check1 == "confirm" || check1 == "Confirm"){
+						fs.writeFile(app_navigation_barsUrl, fileContent.toString(),
+							(err)=>{
+								if(err){
+									console.error(err);
+								}console.log("exe2");
+							}
+						);
+					}
+				}
+			} catch (error) { 
+				console.error(error);
+			}
+		}
+
+		vscode.window.showInformationMessage('finished set up!')
 	});
 
 	context.subscriptions.push(disposable);
