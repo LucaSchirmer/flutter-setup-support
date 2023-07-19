@@ -4,12 +4,10 @@ The flutter setup supportis an extension for easy setup why using flutter. It he
 
 ## Features
 
+You can create using the command "Create App Navigation Handler" a file that helps you navigate through each widget.
 
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
+You can create using the command "Create Dynamic Navigationbar set up" a folder that contains an example app_bar which you can use and also modify to dynamically load and use App Navigationbars (aka Navbar).
+ 
 \!\[feature X\]\(images/feature-x.png\)
 
 > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
