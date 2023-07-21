@@ -1,6 +1,6 @@
 # flutter-setup-support README
 
-The flutter setup supportis an extension for easy setup why using flutter. It helps you spending less time with creating files and so on!
+The flutter setup supportis an extension for easy setup when using flutter. It helps you spending less time with creating files and so on!
 
 ## Features
 
