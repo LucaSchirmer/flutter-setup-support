@@ -7,29 +7,10 @@ The flutter setup supportis an extension for easy setup when using flutter. It h
 You can create using the command "Create App Navigation Handler" a file that helps you navigate through each widget.
 
 You can create using the command "Create Dynamic Navigationbar set up" a folder that contains an example app_bar which you can use and also modify to dynamically load and use App Navigationbars (aka Navbar).
- 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
 ## Requirements
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
 
 ## Release Notes
 
