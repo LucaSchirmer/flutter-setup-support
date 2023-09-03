@@ -1,46 +1,21 @@
-# flutter-setup-support README
+# Flutter Setup Support Extension README
 
-The flutter setup supportis an extension for easy setup when using flutter. It helps you spending less time with creating files, folders and so on!
+The **Flutter Setup Support** extension simplifies Flutter development by streamlining the setup process. It enables you to save time on file and folder creation, allowing you to focus on building your Flutter app.
 
 ## Features
 
-You can create using the command "Create App Navigation Handler" a file that helps you navigate through each widget.
+### Create App Navigation Handler
 
-You can create using the command "Create Dynamic Navigationbar set up" a folder that contains an example app_bar which you can use and also modify to dynamically load and use App Navigationbars (aka Navbar).
+Use the "Create App Navigation Handler" command to generate a file that facilitates navigation through different widgets in your Flutter app. This feature enhances navigation management and ensures a smoother development experience.
 
-## Requirements
+### Create Dynamic Navigationbar Setup
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+With the "Create Dynamic Navigationbar Setup" command, you can create a folder containing an example `app_bar`. This `app_bar` can be customized and dynamically loaded, making it easy to implement and manage App Navigationbars (Navbar) in your Flutter project.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### Version 1.0.0 (September 2023)
 
-### 1.0.0
+This marks the initial release of the Flutter Setup Support extension, version 1.0.0. Get started with simplified Flutter setup and streamline your development workflow.
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+We hope you find this extension valuable for your Flutter projects. Happy coding!

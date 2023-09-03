@@ -1,8 +1,13 @@
 {
   "name": "flutter-setup-support",
+  "publisher": "LucaSchi",
   "displayName": "flutter setup support",
   "description": "A VSCode Extension to support an easier setup for app-development using flutter",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/your-repo.git"
+  },
   "engines": {
     "vscode": "^1.78.0"
   },
