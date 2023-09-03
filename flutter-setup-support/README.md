@@ -1,4 +1,4 @@
-# Flutter Setup Support Extension README
+# Flutter Setup Support Extension
 
 The **Flutter Setup Support** extension simplifies Flutter development by streamlining the setup process. It enables you to save time on file and folder creation, allowing you to focus on building your Flutter app.
 
